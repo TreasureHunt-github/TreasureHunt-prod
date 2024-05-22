@@ -147,7 +147,7 @@ export const Stafford = () => {
   useEffect(() => {
     // If its the systems turn then send an appropriate message
     systemMessagingLogic()
-  }, [systemsTurn])
+  }, [systemsTurn, systemMessagingLogic])
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
