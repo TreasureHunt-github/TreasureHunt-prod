@@ -1,0 +1,11 @@
+.image-container {
+    width: 100%;
+    overflow: hidden; /* Optional: hides any overflow */
+}
+  
+/* Make the image fill the width of the container */
+.full-width-image {
+    width: 100%;
+    height: auto; /* Maintains the aspect ratio */
+    display: block; /* Ensures no extra space at the bottom */
+}
