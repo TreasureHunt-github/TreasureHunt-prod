@@ -48,6 +48,7 @@ export const Stafford = () => {
   const [hintIndex, setHintIndex] = useState(0); // Index of the current clue, should be reseted every correct answer
 
   const { id } = useParams(); // Id from the url - the game instance id
+  console.log(id);
 
   const messagesEndRef = useRef(null);
 
@@ -135,11 +136,11 @@ export const Stafford = () => {
       setInput("");
     }
     // If the system has sent a message, its no longer their go
-    if (side == "left"){
+    if (side === "left"){
       setSystemsTurn(false);
     }
     // If the user has sent a message, its now the systems turn to send a message
-    else if (side == "right"){
+    else if (side === "right"){
       setSystemsTurn(true);  
     }
   };
