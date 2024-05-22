@@ -74,7 +74,7 @@ export const Stafford = () => {
     }
   };
 
-  const systemMessagingLogic = () => {
+  useEffect(() => {
     if (systemsTurn) {
       // If the game hasn't finished
       if (!finished) {
@@ -141,13 +141,8 @@ export const Stafford = () => {
           }
         }
       }
-    }    
-  }
-
-  useEffect(() => {
-    // If its the systems turn then send an appropriate message
-    systemMessagingLogic()
-  }, [systemsTurn, systemMessagingLogic])
+    }  
+  }, [systemsTurn])
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
