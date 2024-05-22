@@ -59,8 +59,22 @@ export const Stafford = () => {
     }
   }, [messages]);
 
-  useEffect(() => {
-    // If its the systems turn then send an appropriate message
+  const handleSendMessage = (side, message) => {
+    if (message.trim() !== "") {
+      setMessages([...messages, { text: message, side }]);
+      setInput("");
+    }
+    // If the system has sent a message, its no longer their go
+    if (side === "left"){
+      setSystemsTurn(false);
+    }
+    // If the user has sent a message, its now the systems turn to send a message
+    else if (side === "right"){
+      setSystemsTurn(true);  
+    }
+  };
+
+  const systemMessagingLogic = () => {
     if (systemsTurn) {
       // If the game hasn't finished
       if (!finished) {
@@ -110,7 +124,7 @@ export const Stafford = () => {
               setTimeout(() => {
                 handleSendMessage("left", data["questions"][questionIndex]["clues"][hintIndex]);
               }, 500);
-              setHintIndex(hintIndex + 1);
+              setHintIndex(i => i + 1);
             } else {
               setTimeout(() => {
                 // Adding a delay to make it seem like a message being sent
@@ -128,22 +142,12 @@ export const Stafford = () => {
         }
       }
     }    
-  }, [systemsTurn])
+  }
 
-  const handleSendMessage = (side, message) => {
-    if (message.trim() !== "") {
-      setMessages([...messages, { text: message, side }]);
-      setInput("");
-    }
-    // If the system has sent a message, its no longer their go
-    if (side === "left"){
-      setSystemsTurn(false);
-    }
-    // If the user has sent a message, its now the systems turn to send a message
-    else if (side === "right"){
-      setSystemsTurn(true);  
-    }
-  };
+  useEffect(() => {
+    // If its the systems turn then send an appropriate message
+    systemMessagingLogic()
+  }, [systemsTurn])
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
