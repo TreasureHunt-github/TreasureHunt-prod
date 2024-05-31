@@ -10,6 +10,7 @@ export default class App extends Component {
       <Router>
         <Routes>
           <Route path="/" element={<Home/>}/>
+          <Route path="/stafford" element={<Stafford/>}/>
           <Route path="/stafford/:id" element={<Stafford/>}/>
           <Route path="/*" element={<Page404/>}/>
         </Routes>
