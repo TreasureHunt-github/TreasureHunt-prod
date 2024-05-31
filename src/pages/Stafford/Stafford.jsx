@@ -74,6 +74,7 @@ export const Stafford = () => {
     }
   };
 
+/* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (systemsTurn) {
       // If the game hasn't finished
@@ -143,6 +144,7 @@ export const Stafford = () => {
       }
     }  
   }, [systemsTurn])
+/* eslint-disable react-hooks/exhaustive-deps */
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
